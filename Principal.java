@@ -14,10 +14,15 @@ public class Principal {
 	        grafo.agregarVertice('A');
 	        grafo.agregarVertice('B');
 	        grafo.agregarVertice('C');
+	        grafo.agregarVertice('D');
+	        grafo.agregarVertice('E');
 	        
 	        grafo.agregarArista('A', 'B', 5, 10);
 	        grafo.agregarArista('B', 'C', 3, 20);
 	        grafo.agregarArista('A', 'C', 7, 30);
+	        grafo.agregarArista('C', 'D', 8, 25);
+	        grafo.agregarArista('D', 'E', 3, 11);
+	        grafo.agregarArista('E', 'B', 9, 22);
 	        
 	        /*List<Arista> aristasDeA = grafo.obtenerAristas('A');
 	        for (Arista arista : aristasDeA) {
@@ -32,7 +37,9 @@ public class Principal {
 	                System.out.println("1- Modificar vértices");
 	                System.out.println("2- Modificar aristas");
 	                System.out.println("3- Mostrar grafo");
-	                System.out.println("4- Buscar camino corto");
+	                System.out.println("4- camino corto (Dijikstra) y Arboles de expension (Prim y Kruskal) ");
+	                System.out.println("5- camino corto con el tiempo o la distancia");
+	                System.out.println("6- Algoritmo de Floyd-Warshall para el camino más corto");
 	                System.out.println("7- Terminar");
 	                
 	                int seleccion = scanner.nextInt();
@@ -149,8 +156,24 @@ public class Principal {
 
 	                        break;
 	                    case 5:
-	                    	
-	                    	
+	                    	System.out.println("1- con el tiempo    2- con la distancia");
+	                    	int P = scanner.nextInt();
+	                    	System.out.println("Vertice origen:");
+                       	     char origenn = scanner.next().charAt(0);
+                       	    System.out.println(" destino: ");
+                   	         char destinyy = scanner.next().charAt(0);
+                   	         
+                   	         if (P == 1) {
+                   	        	 grafo.imprimirRutaMasCortaConTiempo(origenn, destinyy);
+                   	         }else if(P == 2) {
+                   	        	 grafo.imprimirRutaMasCortaConPeso(origenn, destinyy);
+                   	         }
+                   	       
+	                        
+	                    	break;
+	                    case 6:
+	                    	int[][] distancias = grafo.floydWarshall();
+	                        grafo.imprimirDistanciasConRelaciones(distancias);
 	                    	break;
 	                    case 7:
 	                        terminar = true;
