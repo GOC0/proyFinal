@@ -15,9 +15,9 @@ public class Principal {
 	        grafo.agregarVertice('B');
 	        grafo.agregarVertice('C');
 	        
-	        grafo.agregarArista('A', 'B', 5);
-	        grafo.agregarArista('B', 'C', 3);
-	        grafo.agregarArista('A', 'C', 7);
+	        grafo.agregarArista('A', 'B', 5, 10);
+	        grafo.agregarArista('B', 'C', 3, 20);
+	        grafo.agregarArista('A', 'C', 7, 30);
 	        
 	        /*List<Arista> aristasDeA = grafo.obtenerAristas('A');
 	        for (Arista arista : aristasDeA) {
@@ -73,8 +73,10 @@ public class Principal {
 	                    		char dest= scanner.next().charAt(0);
 	                    		System.out.println("Ingrese el peso: ");
 	                    		int pes= scanner.nextInt();
+	                    		System.out.println("Ingrese el tiempo: ");
+	                    		int tiem = scanner.nextInt();
 	                    		
-	                    		grafo.agregarArista(org, dest, pes);
+	                    		grafo.agregarArista(org, dest, pes, tiem);
 	                    	} else if (dan == 2) {
 	                    		
 	                    		
@@ -96,12 +98,60 @@ public class Principal {
 	                    	 System.out.println(grafo); 
 	                        break;
 	                    case 4:
+	                    	
+	                    	 boolean vrai = false;
+		                        
+		                        while(!vrai) {
 	                        System.out.println("1- buscar camino corto entre dos vertices - metodo Dijikstra :");
 	                        System.out.println("2- buscar arboles de expension minima - metodo Prim :");
 	                        System.out.println("3- buscar arboles de expension minima - metodo Kruskal");
-	                        
-	                        
+	                        int sel = scanner.nextInt();
+	                       
+	                        if(sel == 1) {
+	                        	 System.out.println("Vertice origen:");
+	                        	 char ori = scanner.next().charAt(0);
+	                        	 System.out.println(" destino: ");
+	                    	      char destin = scanner.next().charAt(0);
+	                    	      List<Character> rutaMasCorta = grafo.calcularRutaMasCorta(ori, destin);
+	                    	      
+	                    	      if (rutaMasCorta.isEmpty()) {
+	                    	          System.out.println("No hay ruta disponible entre " + ori + " y " + destin);
+	                    	      } else {
+	                    	          System.out.println("Ruta más corta desde " + ori + " hasta " + destin + ":");
+	                    	          System.out.print( ori + " -> ");
+	                    	          for (char vertice : rutaMasCorta) {
+	                    	              System.out.print( vertice + " -> ");
+	                    	          } 
+	                    	      }
+	                        }if (sel == 2) {
+	                            List<Arista> arbolExpansionMinima = grafo.prim();
+	                            
+	                            System.out.println("Rutas óptimas del árbol de expansión mínima:");
+	                            for (Arista arista : arbolExpansionMinima) {
+	                                System.out.println(arista + "->"); // Esto imprimirá el toString() de la clase Arista
+	                            }
+	                        }if (sel == 3) {
+	                            List<Arista> arbolExpansionMinima = grafo.kruskal();
+	                            
+	                            System.out.println("Árbol de expansión mínima (Kruskal):");
+	                            for (Arista arista : arbolExpansionMinima) {
+	                                System.out.println(arista.getOrigen() + " - " + arista.getDestino() + " : " + arista.getPeso());
+	                            }
+	                        }else {
+	                        	System.out.println("terminado");
+	                        }
+	                        System.out.println("1 -terminar o 2- Quedar");
+	                        int D = scanner.nextInt();
+	                        if(D == 1) {
+	                        	vrai= true;
+	                        }
+	                        }
+
 	                        break;
+	                    case 5:
+	                    	
+	                    	
+	                    	break;
 	                    case 7:
 	                        terminar = true;
 	                        break;

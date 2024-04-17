@@ -5,11 +5,36 @@ import java.util.Map;
 
 public class Arista {
 
-	 char destino;
-	    int peso;
+	 private char origen;
+	    private char destino;
+	    private int peso;
+	    private int tiempo;
 
-	    public Arista(char destino, int peso) {
-	        this.destino = destino;
-	        this.peso = peso;}
-	    
+	   
+	    public Arista(char origen, char destino, int peso, int tiempo) {
+			super();
+			this.origen = origen;
+			this.destino = destino;
+			this.peso = peso;
+			this.tiempo = tiempo;
+		}
+
+		public char getOrigen() {
+	        return origen;
+	    }
+
+	    public char getDestino() {
+	        return destino;
+	    }
+
+	    public int getPeso() {
+	        return peso;
+	    }
+		@Override
+		public String toString() {
+	        return origen + " - " + destino + " : " + peso;
+	    }
+		public int getTiempo() {
+			return tiempo;
+		}
 }
