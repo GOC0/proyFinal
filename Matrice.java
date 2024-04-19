@@ -334,7 +334,7 @@ public class Matrice {
                 if (distancias[i][j] == Integer.MAX_VALUE) {
                     System.out.print("INF\t");
                 } else {
-                    System.out.print(distancias[i][j] + "[" + (char) ('A' + i) + "->" + (char) ('A' + j) + "]" + "\t");
+                    System.out.print(distancias[i][j] + "\t");
                 }
             }
             System.out.println();

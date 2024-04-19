@@ -16,6 +16,9 @@ public class Principal {
 	        grafo.agregarVertice('C');
 	        grafo.agregarVertice('D');
 	        grafo.agregarVertice('E');
+	        grafo.agregarVertice('F');
+	        grafo.agregarVertice('G');
+	        
 	        
 	        grafo.agregarArista('A', 'B', 5, 10);
 	        grafo.agregarArista('B', 'C', 3, 20);
@@ -23,10 +26,9 @@ public class Principal {
 	        grafo.agregarArista('C', 'D', 8, 25);
 	        grafo.agregarArista('D', 'E', 3, 11);
 	        grafo.agregarArista('E', 'B', 9, 22);
+	        grafo.agregarArista('D', 'G', 6, 34);
+	        grafo.agregarArista('E', 'F', 4, 48);
 	        
-	        /*List<Arista> aristasDeA = grafo.obtenerAristas('A');
-	        for (Arista arista : aristasDeA) {
-	            System.out.println("Peso de la arista: " + arista.peso); */
 	            
 	            boolean terminar= false;
 	            
@@ -156,6 +158,9 @@ public class Principal {
 
 	                        break;
 	                    case 5:
+	                    	boolean con = false;
+	                    	while(!con) {
+	                    		
 	                    	System.out.println("1- con el tiempo    2- con la distancia");
 	                    	int P = scanner.nextInt();
 	                    	System.out.println("Vertice origen:");
@@ -168,7 +173,12 @@ public class Principal {
                    	         }else if(P == 2) {
                    	        	 grafo.imprimirRutaMasCortaConPeso(origenn, destinyy);
                    	         }
-                   	       
+                   	      System.out.println("1 -terminar o 2- Quedar");
+	                        int ter = scanner.nextInt();
+	                        if(ter == 1) {
+	                        	con = true;
+	                        }
+	                    	}
 	                        
 	                    	break;
 	                    case 6:
