@@ -55,7 +55,7 @@ public class Matrice {
 
     
     public List<Character> calcularRutaMasCorta(char origen, char destino) {
-        // Estructuras de datos auxiliares
+    
         Map<Character, Integer> distancias = new HashMap<>();
         Map<Character, Character> padres = new HashMap<>();
         Set<Character> visitados = new HashSet<>();
@@ -69,18 +69,18 @@ public class Matrice {
         distancias.put(origen, 0);
         colaPrioridad.add(origen);
         
-        // Ejecutar el algoritmo de Dijkstra
+        // Ejecutamos el algoritmo de Dijkstra
         while (!colaPrioridad.isEmpty()) {
             char actual = colaPrioridad.poll();
             if (actual == destino) {
-                break; // Hemos llegado al destino, no necesitamos seguir explorando
+                break;
             }
             if (visitados.contains(actual)) {
-                continue; // Ya hemos procesado este nodo
+                continue; 
             }
             visitados.add(actual);
             
-            // Explorar los vecinos del nodo actual
+            // Exploramos los vecinos del nodo actual
             for (Arista arista : grafo.get(actual)) {
                 char vecino = arista.getDestino();
                 int nuevaDistancia = distancias.get(actual) + arista.getPeso();
@@ -92,10 +92,10 @@ public class Matrice {
             }
         }  
         
-     // Reconstruir la ruta más corta
+     //arreglamos la ruta más corta
         List<Character> rutaMasCorta = new ArrayList<>();
         char nodo = destino;
-        char SENTINELA = '\0'; // Este es el carácter nulo
+        char SENTINELA = '\0';
         while (nodo != SENTINELA && padres.get(nodo) != null) {
             rutaMasCorta.add(nodo);
             nodo = padres.get(nodo);
@@ -107,7 +107,7 @@ public class Matrice {
     }
     
     public List<Character> calcularRutaMasCortaConTiempo(char origen, char destino) {
-        // Estructuras de datos auxiliares
+        
         Map<Character, Integer> tiempos = new HashMap<>();
         Map<Character, Character> padres = new HashMap<>();
         Set<Character> visitados = new HashSet<>();
@@ -125,10 +125,10 @@ public class Matrice {
         while (!colaPrioridad.isEmpty()) {
             char actual = colaPrioridad.poll();
             if (actual == destino) {
-                break; // Hemos llegado al destino, no necesitamos seguir explorando
+                break; 
             }
             if (visitados.contains(actual)) {
-                continue; // Ya hemos procesado este nodo
+                continue; 
             }
             visitados.add(actual);
             
@@ -144,7 +144,6 @@ public class Matrice {
             }
         }
         
-        // Reconstruir la ruta más corta
         List<Character> rutaMasCorta = new ArrayList<>();
         char nodo = destino;
         char SENTINELA = '\0'; // Este es el carácter nulo
@@ -227,12 +226,10 @@ public class Matrice {
             Arista arista = colaPrioridad.poll();
             char destino = arista.getDestino();
             
-            // Si el destino ya ha sido visitado, continuar
             if (visitados.contains(destino)) {
                 continue;
             }
             
-            // Agregar la arista al árbol de expansión mínima
             arbolExpansionMinima.add(arista);
             visitados.add(destino);
             
@@ -252,7 +249,7 @@ public class Matrice {
         List<Arista> arbolExpansionMinima = new ArrayList<>();
         List<Arista> todasAristas = new ArrayList<>();
         
-        // Agregar todas las aristas del grafo a la lista de aristas
+        // Agregar todas las aristas del grafo 
         for (List<Arista> listaAristas : grafo.values()) {
             todasAristas.addAll(listaAristas);
         }
@@ -263,7 +260,6 @@ public class Matrice {
         
         UnionF unionF = new UnionF(grafo.keySet());
         
-        // Iterar sobre todas las aristas en orden ascendente de peso
         for (Arista arista : todasAristas) {
             char origen = arista.getOrigen();
             char destino = arista.getDestino();
