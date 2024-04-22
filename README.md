@@ -9,5 +9,12 @@ Terminar en el menu.
 Parte explicativo
 ese codigo esta dividido en diferentes clases
 1- la clase Arista    2- la clase Matriz  3- la clase principal   4- la clase unionF
-la mayoria de las funciones importante del algoritmo son colocadas en la clase Matriz. tales como:
-calcularRutasMasCortas, imprimir grafo, algortimos de Prim o Kruskal, ect.... 
+la mayoria de las funciones importante del algoritmo son colocadas en la clase Matriz. 
+
+los vertices de ese grafo son programados para ser characteres. para agrager un nuevo vertice, se llama la funcion
+agregarVertice que toma un character y crea tambien una nueva Arraylist
+
+para agregar un arista, se utilisa la funcion agregarArista que toma como entrada el vertice origen, el vertice destino,
+su peso y el tiempo recorido.
+
+para el algoritmo de camino corto de Dijikstra, se utilisa la funcion calcularRutaMasCorta que toma como entrada el vertice origen y el vertice destino.  
